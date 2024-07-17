@@ -1,6 +1,8 @@
-Main Copyrights
+# Copyright
 
-(C) 2022 Artyom Beilis - GPLv3
+MyAstroHopper: (C) 2024 Rune Mathisen - GPLv3
+
+Original AstroHopper: (C) 2022 Artyom Beilis - GPLv3
 
 Specific copyrights:
 

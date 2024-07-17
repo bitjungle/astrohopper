@@ -1,10 +1,10 @@
 {
-    "name": "AstroHopper",
-    "short_name": "AstroHopper",
+    "name": "MyAstroHopper",
+    "short_name": "MyAstroHopper",
     "start_url": "/astrohopper.html",
     "display": "standalone",
     "background_color": "#000",
-    "description": "AstroHopper - Astronomical Navigation Application",
+    "description": "MyAstroHopper - Astronomical Navigation Application",
     "icons": [
         {
             "src": "icons/icon-64.png",
