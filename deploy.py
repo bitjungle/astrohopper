@@ -79,7 +79,7 @@ def embed(manual: str, version: str) -> None:
     """Embed scripts and images as base64, and replace version placeholders in the HTML template."""
     script_pattern = re.compile(r'^<script src="(.*)"></script>')
     version_pattern = re.compile(r'.*Settings \((version)\).*')
-    urlpng_pattern = re.compile(r'^(.*)url\(([a-z0-9_\-]*\.png)\)(.*)$')
+    urlpng_pattern = re.compile(r'^(.*)url\(([a-zA-Z0-9_\-/]*\.png)\)(.*)$')
     urlpng2_pattern = re.compile(r'^(.*<img.*)src="([a-z0-9_\-\/]*\.png)"(.*)$')
 
     try:
