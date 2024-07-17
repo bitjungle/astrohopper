@@ -118,8 +118,8 @@
 <body>
 <canvas style="position:absolute; left:0; top:0; z-index:-1"  id="myCanvas" width="640" height="480"> </canvas>
 <div class="only_full">
-    <input id="search_field_main" class="search_field" autocomplete="off" type="text" value="search" onkeyup="mainSearchDoneCheck(event);" oninput="mainSearchFindTarget(this.value);" onfocus="mainSearchFocus();" onclick="mainSearchFocus();" onfocusout="mainSearchOnFocusChange(false);" onfocusin="mainSearchOnFocusChange(true)" />
-    <button class="incdec_but search_background" id="main_search_button" style="display:none; margin-right:1mm;" onclick="reShearchMain();">&nbsp;</button>
+    <input id="search_field_main" class="search_field" autocomplete="off" type="text" value="search" onkeyup="mainSearchDoneCheck(event);" oninput="mainSearchFindTarget(this.value);" onfocus="handleFocus(true);" onblur="handleFocus(false);" />
+	<button class="incdec_but search_background" id="main_search_button" style="display:none; margin-right:1mm;" onclick="reShearchMain();">&nbsp;</button>
     <button id="search_field_main_ok" ></button>
 </div>
 <p class="first_line_controls" >
@@ -284,7 +284,11 @@
 	<p id="wl_errors"></p>
 </div>
 <form onsubmit="return hideSettingIfSelectionOk()" >
-<p> <input id="search_field" type="text" oninput="findTargetByName(this.value)" onclick="this.value='';" onfocus="findTargetByName(this.value)" style="width:30%" /> <input type="submit" value="&#x2315;"/> <b><span style="float:right" id="find_status"><span></b></p>
+	<p>
+		<input id="search_field" type="text" oninput="findTargetByName(this.value)" onclick="this.value='';" onfocus="findTargetByName(this.value)" style="width:30%" />
+		<input type="submit" value="&#x2315;" />
+		<b><span style="float:right" id="find_status"></span></b>
+	</p>
 </form>
 <table style="width:100%">
 <tr>
@@ -586,7 +590,12 @@ function mainSearchFocus()
     document.getElementById('search_field_main').value="";
     event.stopPropagation();
 }
-
+function handleFocus(isFocused) {
+    mainSearchOnFocusChange(isFocused);
+    if (isFocused) {
+        mainSearchFocus();
+    }
+}
 function findTargetByName(name ='')
 {
 	var found = document.getElementById('find_status')
