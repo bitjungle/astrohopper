@@ -55,10 +55,13 @@ def make_manual() -> str:
         print(f"Error creating manual: {e}")
         return ""
 
-def embed_service_worker(version: str) -> None:
-    """Embed version number into sw.js and write to sw_deploy.js."""
+def embed_service_worker(version: str, target: str) -> None:
+    """Embed version number into sw.js and write to target/sw.js."""
     try:
-        with open("sw.js", "r", encoding="utf-8") as f, open("sw_deploy.js", "w", encoding="utf-8") as out:
+        if not os.path.exists(target):
+            os.makedirs(target)
+
+        with open("sw.js", "r", encoding="utf-8") as f, open(os.path.join(target, "sw.js"), "w", encoding="utf-8") as out:
             content = f.read().replace('VERSION', version)
             out.write(content)
     except Exception as e:
@@ -75,15 +78,18 @@ def png_encode(path: str) -> str:
         print(f"Error encoding PNG: {e}")
         return ""
 
-def embed(manual: str, version: str) -> None:
+def embed(manual: str, version: str, target: str) -> None:
     """Embed scripts and images as base64, and replace version placeholders in the HTML template."""
     script_pattern = re.compile(r'^<script src="(.*)"></script>')
     version_pattern = re.compile(r'.*Settings \((version)\).*')
     urlpng_pattern = re.compile(r'^(.*)url\(([a-zA-Z0-9_\-/]*\.png)\)(.*)$')
-    urlpng2_pattern = re.compile(r'^(.*<img.*)src="([a-z0-9_\-\/]*\.png)"(.*)$')
+    urlpng2_pattern = re.compile(r'^(.*<img.*)src="([a-zA-Z0-9_\-/]*\.png)"(.*)$')
+
+    if not os.path.exists(target):
+        os.makedirs(target)
 
     try:
-        with open("astrohopper.html", "r", encoding="utf-8") as f, open("astrohopper_deploy.html", "w", encoding="utf-8") as out:
+        with open("astrohopper.html", "r", encoding="utf-8") as f, open(os.path.join(target, "index.html"), "w", encoding="utf-8") as out:
             for line in f:
                 m = script_pattern.match(line)
                 v = version_pattern.match(line)
@@ -113,10 +119,7 @@ def embed(manual: str, version: str) -> None:
 
 def deploy_files(target: str) -> None:
     """Copy final deployment files and the images directory to the target directory."""
-    if not os.path.exists(target):
-        os.makedirs(target)
-
-    files_to_copy = ['astrohopper_deploy.html', 'sw_deploy.js', 'LICENSE', 'COPYING.md', 'manual.html', 'manifest.json']
+    files_to_copy = ['LICENSE', 'COPYING.md', 'manual.html', 'manifest.json']
     for file_name in files_to_copy:
         try:
             copyf(file_name, os.path.join(target, file_name))
@@ -138,10 +141,9 @@ def main() -> None:
         return
 
     man = make_manual()
-    embed(man, ver)
-    embed_service_worker(ver)
-
     target_dir = sys.argv[1] if len(sys.argv) > 1 else '_deploy'
+    embed(man, ver, target_dir)
+    embed_service_worker(ver, target_dir)
     deploy_files(target_dir)
 
 if __name__ == "__main__":
