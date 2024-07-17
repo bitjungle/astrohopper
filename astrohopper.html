@@ -10,114 +10,111 @@
 	<meta name="apple-mobile-web-app-title" content="MyAstroHopper">
 	<meta name="theme-color" content="#000000">
 	<link rel="apple-touch-icon" href="icons/icon-256.png">
+	<style>
+	body, td { margin:3mm 0 0 0; font-size: 5mm ; color:red ; font-family: sans; background-color:black }
+	a:link {color: red;}
+	a:visited { color: red; }
+	a:active { color:red; }
+	a:hover { color:red; }
+	button { border-radius:2mm; height:10mm; font-size:5mm ; text-align:center; vertical-align: middle; background-color:black; color:red; border: 2px solid red }
+	.comp_but, .incdec_but { width: 10mm ; height:10mm; font-size:5mm ; padding: 0 }
+	.comp_but { float:right; }
+	.only_tiny { display : none; }
+	.only_tiny_tr { display : none; }
+	.only_full { display : inline; }
+	.only_tiny_b { display : none; }
+	.half-width { width: 50%; }
+
+	#search_field_main_ok {
+		position:absolute;
+		top:31mm;
+		right:10%;
+		height:10mm;
+		border:0px;
+		margin-left:1mm;
+		display:none;
+		background-color: transparent;
+	}
+
+	#main_search_button {
+		position:absolute;
+		right:27mm;
+		margin:0;
+		top:3mm;
+	}
+
+	#search_field_main {
+		position:absolute;
+		right:12mm;
+		top:3mm;
+		margin:0;
+		border-radius:2mm;
+		width:15mm;
+		padding-left:1mm;
+		font-size:66%;
+	}
+
+	#search_field_main:focus {
+		position:absolute;
+		right:10%;
+		left:10%;
+		top:31mm;
+		padding:0;
+		width:80%;
+		font-size:100%;
+	}
+
+	.first_line_controls {
+		padding:0;
+		margin:1mm 1mm 1mm 1mm;
+	}
+
+	.manual_background {
+		background: url(images/manual-blk.png) no-repeat center center;
+		background-size: 10mm 10mm;
+	}
+
+	.compass_background {
+		background: url(images/compass-blk.png) no-repeat center center;
+		background-size: 10mm 10mm;
+	}
+
+	.wiki_background {
+		background: url(images/wiki.png) no-repeat center center;
+		background-size: 10mm 10mm;
+	}
+
+	.search_background {
+		background: url(images/search.png) no-repeat center center;
+		background-size: 10mm 10mm;
+	}
+
+	.nocompass_background {
+		background: url(images/nocompass-blk.png) no-repeat center center;
+		background-size: 10mm 10mm;
+	}
+
+	.settings_background {
+		background: url(images/settings-blk.png) no-repeat center center;
+		background-size: 10mm 10mm;
+	}
+
+	input[type=text], input[type=text]:focus, textarea, input[type=submit]{
+		border: 2px solid red;
+		color:red;
+		background-color:black;
+	}
+
+	input[type=text], input[type=text]:focus, input[type=submit] {
+		height:10mm;
+		font-size:5mm;
+			padding: 0;
+		vertical-align: middle; background-color:black; 
+	}
+
+	input[type=submit] { width:10mm;}
+	</style>
 </head>
-<style>
-body, td { margin:3mm 0 0 0; font-size: 5mm ; color:red ; font-family: sans; background-color:black }
-a:link {color: red;}
-a:visited { color: red; }
-a:active { color:red; }
-a:hover { color:red; }
-button { border-radius:2mm; height:10mm; font-size:5mm ; text-align:center; vertical-align: middle; background-color:black; color:red; border: 2px solid red }
-.comp_but, .incdec_but { width: 10mm ; height:10mm; font-size:5mm ; padding: 0 }
-.comp_but { float:right }
-.only_tiny { display : none }
-.only_tiny_tr { display : none }
-.only_full { display : inline }
-.only_tiny_b { display : none }
-
-#search_field_main_ok {
-    position:absolute;
-    top:31mm;
-    right:10%;
-    height:10mm;
-    border:0px;
-    margin-left:1mm;
-    display:none;
-    background-color: transparent;
-}
-
-#main_search_button {
-    position:absolute;
-    right:27mm;
-    margin:0;
-    top:3mm;
-}
-
-#search_field_main {
-    position:absolute;
-    right:12mm;
-    top:3mm;
-    margin:0;
-    border-radius:2mm;
-    width:15mm;
-    padding-left:1mm;
-    font-size:66%;
-}
-
-#search_field_main:focus {
-    position:absolute;
-    right:10%;
-    left:10%;
-    top:31mm;
-    padding:0;
-    width:80%;
-    font-size:100%;
-}
-
-
-.first_line_controls {
-    padding:0;
-    margin:1mm 1mm 1mm 1mm;
-}
-
-.manual_background {
-    background: url(images/manual-blk.png) no-repeat center center;
-    background-size: 10mm 10mm;
-}
-
-.compass_background {
-    background: url(images/compass-blk.png) no-repeat center center;
-    background-size: 10mm 10mm;
-}
-
-.wiki_background {
-    background: url(images/wiki.png) no-repeat center center;
-    background-size: 10mm 10mm;
-}
-
-.search_background {
-    background: url(images/search.png) no-repeat center center;
-    background-size: 10mm 10mm;
-}
-
-.nocompass_background {
-    background: url(images/nocompass-blk.png) no-repeat center center;
-    background-size: 10mm 10mm;
-}
-
-.settings_background {
-    background: url(images/settings-blk.png) no-repeat center center;
-    background-size: 10mm 10mm;
-}
-
-
-input[type=text], input[type=text]:focus, textarea, input[type=submit]{
-	border: 2px solid red;
-	color:red;
-	background-color:black;
-}
-
-
-input[type=text], input[type=text]:focus, input[type=submit] {
-	height:10mm;
-	font-size:5mm;
-        padding: 0;
-	vertical-align: middle; background-color:black; 
-}
-
-
-input[type=submit] { width:10mm;}
-</style>
 <body>
 <canvas style="position:absolute; left:0; top:0; z-index:-1"  id="myCanvas" width="640" height="480"> </canvas>
 <div class="only_full">
@@ -168,7 +165,7 @@ input[type=submit] { width:10mm;}
             <button class="ui_but" onclick="qsShowHide(2,1)">Next &gt;</button>
         
         </p>
-        <img style="float:right" width="50%" src="images/qs_1_1.png" alt="Setup" />
+        <img style="float:right" class="half-width" src="images/qs_1_1.png" alt="Setup" />
         <p>Connect the smartphone to the optical tube such that its top points to the viewing direction and it lies flat on the tube.</p>
     </div>
     <div id="qs_2" style="display:none;">
@@ -176,7 +173,7 @@ input[type=submit] { width:10mm;}
             <button class="ui_but" onclick="qsShowHide(1,2)">&lt; Prev</button>
             <button class="ui_but" onclick="qsShowHide(3,2)">Next &gt;</button>
         </p>
-        <img style="float:right"  width="50%" src="images/qs_2_1.png" alt="Setup" />
+        <img style="float:right" class="half-width" src="images/qs_2_1.png" alt="Setup" />
         <p>Point the telescope to an easily identifiable star or planet <strong>nearby</strong> an object you want to find. For example in order to find M41 or M47, point the telescope to Sirius &mdash; this is going to be the <em>alignment star</em>.</p>
         <p>When the telescope is pointing to the alignment star tap <button class="ui_but">Align</button> button and tap on the alignment star on the map. Once the application is aligned, it tracks the telescope movement using smartphone's sensors.</p>
     </div>
@@ -195,7 +192,7 @@ input[type=submit] { width:10mm;}
             <button class="ui_but" onclick="qsShowHide(3,4)">&lt; Prev</button>
             <button class="ui_but" disabled style="color:#800">Next &gt;</button>
         </p>
-        <img style="float:right"  width="50%" src="images/qs_3_1.png" alt="Setup" />
+        <img style="float:right"  class="half-width" src="images/qs_3_1.png" alt="Setup" />
         <p>Once aligned, tap on the object you want to find (for example M41, M47) and follow the direction line on the map till you reach the target. Now you can observe the object you selected.</p>
         <p>It is recommended to repeat alignment for each new target you want to find</p>
         <p>For detailed instruction and troubleshooting please refer to the <a href="https://youtu.be/AtArqBLWWJ8">[Video&nbsp;Tutorial]</a>
