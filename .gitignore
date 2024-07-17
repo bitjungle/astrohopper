@@ -4,4 +4,5 @@ skyhopper.py
 manual.html
 .venv
 *_deploy.*
+_deploy
 *.pyc

@@ -1,18 +1,14 @@
-# AstroHopper - (f.k.a. SkyHopper)
+# MyAstroHopper
 
 [TOC]
 
-[AstroHopper](https://artyom-beilis.github.io/astrohopper.html) (formerly known as SkyHopper) is a free and open-source
-web application developed by [Artyom Beilis](https://github.com/artyom-beilis/skyhopper) that helps to find objects across the night sky.
-It does this by allowing an accurate hop from a well-known and easily identifiable 
-star to other fainter stars or DSO by measuring changes in pointing angles of the cell phone
-using built in gyroscope and gravity sensors. It is similar to Digital Setting Circles 
-implemented in a smart phone.
+`MyAstroHopper` is a customized version of the original [AstroHopper/Skyhopper](https://github.com/artyom-beilis/skyhopper), tailored to meet my personal preferences and needs. The original project, created by [Artyom Beilis](https://github.com/artyom-beilis), is a free and open-source web application. I do not offer support for this fork and do not provide a deployed version on a web server. For usage, please refer to [the deployment of the original project](https://artyom-beilis.github.io/astrohopper.html).
 
-The smart phone must have gyro and gravity sensors and preferably compass.
+`MyAstroHopper` is a web application designed to help users locate celestial objects in the night sky. It facilitates accurate navigation from a well-known and easily identifiable star to other fainter stars or deep-sky objects (DSOs) by measuring changes in the pointing angles of a smartphone using its built-in gyroscope and gravity sensors. This functionality is akin to Digital Setting Circles implemented on a smartphone.
 
-AstroHopper is a web-based application that contains a single HTML page with a JavaScript objects 
-database that will continue working even offline as long as it is cached by the browser.
+For optimal performance, the smartphone should be equipped with gyroscope, gravity sensors, and preferably a compass.
+
+AstroHopper is a web-based application consisting of a single HTML page with a JavaScript object database. It continues to function offline as long as it is cached by the browser.
 
 ## Operation
 
